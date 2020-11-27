@@ -2,7 +2,7 @@
 
 SoftwareSerial Serial1(10, 11); //connect RXD pin of sim800L to pin 11 of arduino, connect the TXD pin of sim800L to pin10 of arduino
 String command;
-
+//make sure the antenna is well attached , otherwise you wont be able to see messages
 //If you are using different powersupplies, make sure they are grounded together with the arduino's ground
 
 #define  Im_at_break_please "BREAK"
@@ -18,10 +18,17 @@ void setup()
   delay(1000);
   Serial1.println("AT");
   pollSms();
-  delay(10000);
+  int x=0;
+  while(x<1500){
+  
   Serial.println("Searching Network...");
+  delay(10);
+   x++;
+  }
   delay(5000);
-  Serial.println("Searching Network...");
+  Serial.println("Network connected succesfully...");
+  Serial.println("Now send you commands on sms to sim card inserted in the module...");
+  delay(100);
   Serial1.println("AT+CMGF=1");
   pollSms();
   Serial1.println("AT+CNMI=1,2,0,0,0");

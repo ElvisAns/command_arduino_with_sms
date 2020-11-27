@@ -1,7 +1,9 @@
 #include<SoftwareSerial.h>
 
-SoftwareSerial Serial1(10, 11);
+SoftwareSerial Serial1(10, 11); //connect RXD pin of sim800L to pin 11 of arduino, connect the TXD pin of sim800L to pin10 of arduino
 String command;
+
+//If you are using different powersupplies, make sure they are grounded together with the arduino's ground
 
 #define  Im_at_break_please "BREAK"
 #define  Im_outside_please "OUTS"

@@ -19,10 +19,10 @@ void setup()
   Serial1.println("AT");
   pollSms();
   int x=0;
-  while(x<1500){
+  while(x<15){
   
   Serial.println("Searching Network...");
-  delay(10);
+  delay(1000);
    x++;
   }
   delay(5000);
@@ -55,15 +55,15 @@ void pollSms()
     constchar += char(Serial1.read());
   }
 
-  if (constchar.length() > 56) {
-    command = constchar.substring(56);
+  if (constchar.length() > 55) {
+    command = constchar.substring(55);
     command.trim();
     command.toUpperCase();
     if (command ==  Im_at_break_please) {
-      Serial.println("Im at break please comme after");
+      Serial.println("Im at break please come after");
     }
     //nest all other conditions after!
-    //Serial.println(constchar.substring(56));
+    Serial.println(constchar.substring(55));
   }
 
 }
